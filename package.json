@@ -1,0 +1,16 @@
+{
+  "name": "omega-screen-recorder",
+  "version": "1.0.0",
+  "description": "OMEGA Screen Recorder Desktop App",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0"
+  },
+  "keywords": ["screen-recorder", "electron"],
+  "author": "OMEGA Focus",
+  "license": "MIT"
+}
