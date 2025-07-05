@@ -1,0 +1,397 @@
+/* Simple CSS for testing - no fancy layout yet */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: auto; /* Allow scrolling when maximized */
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #1e1e2e;
+    color: #ffffff;
+    padding: 15px;
+    min-height: 100vh; /* Ensure full height coverage */
+}
+
+.app-container {
+    max-width: 600px; /* Increased max width for larger screens */
+    min-height: calc(100vh - 30px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* Allow content to expand */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Don't compress header */
+}
+
+.header h1 {
+    font-size: 22px;
+    color: #8b5cf6;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Status Indicator */
+.status-section {
+    text-align: center;
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Don't compress status */
+}
+
+.status-indicator {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.status-ring {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 90px;
+    height: 90px;
+    border: 3px solid #22c55e;
+    border-radius: 50%;
+    transition: border-color 0.3s ease;
+}
+
+.status-circle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+    background: #2d2d42;
+    border: 2px solid #22c55e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.status-text {
+    font-size: 11px;
+    font-weight: bold;
+    color: #22c55e;
+    transition: color 0.3s ease;
+}
+
+.status-indicator.recording .status-ring {
+    border-color: #ef4444;
+}
+
+.status-indicator.recording .status-circle {
+    background: #ef4444;
+    border-color: #ef4444;
+}
+
+.status-indicator.recording .status-text {
+    color: white;
+}
+
+/* Timer */
+.timer {
+    text-align: center;
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Don't compress timer */
+}
+
+.timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8b5cf6;
+    font-family: 'Courier New', monospace;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Don't compress controls */
+}
+
+.control-btn {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.control-btn .icon {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.record-btn {
+    background: #ef4444;
+}
+
+.record-btn:hover:not(:disabled) {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.stop-btn {
+    background: #64748b;
+}
+
+.stop-btn:hover:not(:disabled) {
+    background: #94a3b8;
+    transform: scale(1.05);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Cards */
+.card {
+    background: #2d2d42;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    flex-shrink: 0; /* Don't compress cards */
+}
+
+.card-header {
+    padding: 12px 15px 8px;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.card-content {
+    padding: 0 15px 15px;
+}
+
+/* Settings */
+.setting-row {
+    margin-bottom: 12px;
+}
+
+.setting-row:last-child {
+    margin-bottom: 0;
+}
+
+.setting-label {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.setting-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.setting-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #3f3f55;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.setting-btn.active {
+    background: #8b5cf6;
+}
+
+.setting-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* File Input */
+.file-input-container {
+    background: #2a2a3e;
+    border: 1px solid #3f3f55;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.file-input {
+    flex: 1;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 11px;
+    outline: none;
+}
+
+.browse-btn {
+    padding: 8px 10px;
+    background: #8b5cf6;
+    border: none;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.browse-btn:hover {
+    background: #a855f7;
+}
+
+/* Responsive design for larger screens */
+@media (min-width: 500px) {
+    .app-container {
+        max-width: 500px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+    
+    .timer-display {
+        font-size: 32px;
+    }
+    
+    .control-btn {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .control-btn .icon {
+        font-size: 18px;
+    }
+    
+    .status-indicator {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .status-ring {
+        top: 10px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .status-circle {
+        top: 25px;
+        left: 25px;
+        width: 90px;
+        height: 90px;
+    }
+    
+    .status-text {
+        font-size: 14px;
+    }
+}
+
+/* Status Message */
+.status-message {
+    text-align: center;
+    font-size: 10px;
+    color: #64748b;
+    margin-top: auto; /* Push to bottom */
+    padding-top: 10px;
+    flex-shrink: 0; /* Don't compress status message */
+}
+
+/* Responsive design for larger screens */
+@media (min-width: 500px) {
+    .app-container {
+        max-width: 500px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+    
+    .timer-display {
+        font-size: 32px;
+    }
+    
+    .control-btn {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .control-btn .icon {
+        font-size: 18px;
+    }
+    
+    .status-indicator {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .status-ring {
+        top: 10px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .status-circle {
+        top: 25px;
+        left: 25px;
+        width: 90px;
+        height: 90px;
+    }
+    
+    .status-text {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 700px) {
+    .app-container {
+        max-width: 600px;
+    }
+    
+    .controls {
+        gap: 30px;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    .card-header {
+        padding: 18px 20px 12px;
+    }
+    
+    .card-content {
+        padding: 0 20px 20px;
+    }
+}
